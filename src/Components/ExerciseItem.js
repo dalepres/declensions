@@ -28,7 +28,7 @@ export const ExerciseItem = (exerciseItemSettings) => {
                 declensionList={declensionList} 
                 showAnswers={showAnswers}
             />
-            <div style={{textAlign:'center'}}><Button size="small" 
+            <div style={{textAlign:'center', marginTop: '0.5em'}}><Button size="small" 
             variant="contained" 
             onClick={showHideAnswers}>{showAnswers ? "Hide " : "Show "}<br/>Answers
             </Button></div>

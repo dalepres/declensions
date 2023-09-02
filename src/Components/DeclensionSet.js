@@ -1,38 +1,39 @@
-import React, { useState } from 'react'
-import { DeclensionItem } from './DeclensionItem'
+import React, { useState } from 'react';
+import { DeclensionItem } from './DeclensionItem';
+import { ExerciseInput } from './ExerciseInput';
+import Stack from '@mui/material/Stack';
 
 export const DeclensionSet = (props) => {
 
 
     const showAnswers = props.showAnswers;
-    //alert("in declensionset; showAnswers: " + showAnswers);
 
     return (
-        <stack>
-            <DeclensionItem 
+        <Stack>
+            <ExerciseInput
                 showAnswers={showAnswers} 
                 useCase={'Nominative'}
             />
-            <DeclensionItem 
+            <ExerciseInput 
                 showAnswers={showAnswers} 
                 useCase='Genitive' 
             />
-            <DeclensionItem 
+            <ExerciseInput 
                 showAnswers={showAnswers} 
                 useCase='Dative' 
             />
-            <DeclensionItem 
+            <ExerciseInput 
                 showAnswers={showAnswers} 
                 useCase='Accusative' 
             />
-            <DeclensionItem 
+            <ExerciseInput 
                 showAnswers={showAnswers} 
                 useCase='Ablative' 
             />
-            <DeclensionItem 
+            <ExerciseInput 
                 showAnswers={showAnswers} 
                 useCase='Vocative' 
             />
-        </stack>
+        </Stack>
     )
 }

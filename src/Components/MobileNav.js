@@ -9,8 +9,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 //MobileNav including selected screen name to state.
-export const MobileNav = () => {
+export const MobileNav = (props) => {
 
+    const getNavSelection=props.getNavSelection;
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -18,19 +19,19 @@ export const MobileNav = () => {
     };
     const handleClose = (event) => {
       setAnchorEl(null);
-      alert(event.target.id)
+      var navSelection = getNavSelection(event.target.id);
     };
   
     return (
         <Stack alignItems="flex-start">
-            <IconButton aria-label='Menu' size='large'
+            <IconButton aria-label='Menu' size='small'
                 id="nav-button"
                 aria-controls={open ? 'mobile-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <MenuIcon sx={{ width: '60px', height: '60px' }} />
+                <MenuIcon sx={{ width: '50px', height: '50px' }} />
             </IconButton>
             <Menu
                 id="mobile-menu"

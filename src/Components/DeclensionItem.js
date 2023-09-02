@@ -6,12 +6,10 @@ import Tooltip from '@mui/material/Tooltip';
 export const DeclensionItem = (props) => {
     const useCase = props.useCase;
     const showAnswers = props.showAnswers;
-    //alert(showAnswers);
-
 
     return (
 
-        <Stack direction='column'  padding="3px">
+        <Stack>
             <Tooltip 
               id={useCase} 
               title={useCase} 

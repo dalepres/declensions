@@ -14,17 +14,17 @@ import FormGroup from '@mui/material/FormGroup';
 import Switch from '@mui/material/Switch';
 import Divider from '@mui/material/Divider';
 import FormHelperText from '@mui/material/FormHelperText';
-
-import { Typography } from "@mui/material"
+import Typography from "@mui/material/Typography";
+import CheckBox from '@mui/material/Checkbox';
 
 
 export const Configurator = () => {
     const handleSwitchChange = (event) => {
         setSwitchState({
             ...switchState,
-            [event.target.name]: event.target.checked
+            [event.target.id]: event.target.checked
         });
-        alert(event.target.checked); 
+        alert(event.target.id + event.target.checked);
         //: event.target.checked});
     }
 
@@ -39,109 +39,240 @@ export const Configurator = () => {
     });
 
 
+    return (
+        <div className="Config-Screen" style={{
+            padding: '4px',
+            fontSize: '0.5em'
+        }}>
+            <Box
+                border={'1px solid grey'}
+            >
+                <fieldset>
+                    <legend style={{
+                        fontSize: "14pt",
+                        fontWeight: 'bold',
+                        textAlign: 'left'
+                    }}>
+                        Practice Options:
+                    </legend>
+                    <fieldset>
+                        <legend>Show which cases?</legend>
+                        <table style={{ width: "100%" }}>
+                            <tr style={{ width: "100%" }}>
 
-        return (
-            <div style={{ padding: '10px' }}>
-                <Box
-                    border={'1px solid grey'}
-                    width='275px'
-                >
-                    <FormGroup>
-                        <FormControl>
-                            <FormLabel id='practice-session-options'>
-                                Practice Session Options
-                            </FormLabel>
-                            <FormControlLabel
-                                control={
-                                    <Switch
-                                        checked={switchState.allCases}
-                                        onChange={handleSwitchChange}
-                                        name="allCases"
+                                <td style={{ textAlign: 'center' }} >
+                                    <input
+                                        type="radio"
+                                        checked
+                                        id="allSelected"
+                                        name="showWhichCases"
+                                        value="allSelected"
                                     />
-                                }
-                                label="All Cases"
-                            />
-                        </FormControl>
-                    </FormGroup>
-                    <Divider />
-                    <FormGroup>
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={switchState.nominative}
-                                    onChange={handleSwitchChange}
-                                    name="nominative"
-                                />
-                            }
-                            label="Nominative"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={switchState.genitive}
-                                    onChange={handleSwitchChange}
-                                    name="genitive"
-                                />
-                            }
-                            label="Genitive"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={switchState.dative}
-                                    onChange={handleSwitchChange}
-                                    name="dative"
-                                />
-                            }
-                            label="Dative"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={switchState.accusative}
-                                    onChange={handleSwitchChange}
-                                    name="accusative"
-                                />
-                            }
-                            label="Accusative"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={switchState.ablative}
-                                    onChange={handleSwitchChange}
-                                    name="ablative"
-                                />
-                            }
-                            label="Ablative"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Switch
-                                    checked={switchState.vocative}
-                                    onChange={handleSwitchChange}
-                                    name="vocative"
-                                />
-                            }
-                            label="Vocative"
-                        />
-                    </FormGroup>
-                    <FormHelperText>Gettin' Rich</FormHelperText>
-                    <Divider />
-                    <Accordian>
-                        <AccordionSummary
-                            id='wordList'
-                            aria-controls='wordListContent'
-                            expandIcon={<ExpandMoreIcon />}
-                        >
-                            <Typography>Word List</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>Add some stuff to accordion</Typography>
-                        </AccordionDetails>
-                    </Accordian>
+                                    <label for="allSelected">All selected</label>
+                                </ td>
 
-                </Box>
-            </div >
-        )
-    }
+                                <td style={{ textAlign: 'center', width: '50%' }} >
+                                    <input
+                                        type="radio"
+                                        id="oneAtATime"
+                                        name="showWhichCases"
+                                        value="oneAtATime"
+                                    />
+                                    <label for="oneAtATime">
+                                        One at a Time
+                                    </label>
+                                </ td>
+
+                            </tr>
+                        </ table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Select case order:</legend>
+                        <table style={{ width: "100%" }}>
+                            <tr style={{ width: "100%" }}>
+                                <td style={{ textAlign: 'center', width: '50%' }} >
+                                    <input
+                                        type="radio"
+                                        checked
+                                        id="bookOrder"
+                                        name="caseOrder"
+                                        value="bookOrder"
+                                    />
+                                    <label for="bookOrder">
+                                        Book Order
+                                    </label>
+                                </ td>
+                                <td style={{ textAlign: 'center' }} >
+                                    <input
+                                        type="radio"
+                                        id="randomorder"
+                                        name="caseOrder"
+                                        value="randomorder"
+                                    />
+                                    <label for="randomorder">
+                                        Random Order
+                                    </label>
+                                </ td>
+                            </ tr>
+                        </ table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>New Word:</legend>
+                        <table style={{ width: "100%" }}>
+                            <tr style={{ width: "100%" }}>
+
+                                <td style={{ textAlign: 'center', width: '34%' }} >
+                                    <input
+                                        type="radio"
+                                        checked
+                                        id="newEachDeclensionSet"
+                                        name="newWord"
+                                        value="newEachDeclensionSet"
+                                    />
+                                    <label for="newEachDeclensionSet">
+                                        After Case Set
+                                    </label>
+                                </ td>
+
+                                <td style={{ textAlign: 'center', width: '33%' }} >
+                                    <input
+                                        type="radio"
+                                        id="newWordEachScreen"
+                                        name="newWord"
+                                        value="newWOrdEachScreen"
+                                    />
+                                    <label for="newWordEachScreen">
+                                        Each Screen
+                                    </label>
+                                </ td>
+
+                                <td style={{ textAlign: 'center', width: '33%' }} >
+                                    <input
+                                        type="radio"
+                                        id="onRequestOnly"
+                                        name="newWord"
+                                        value="onRequestOnly"
+                                    />
+                                    <label for="onRequestOnly">
+                                        On Request Only
+                                    </label>
+                                </ td>
+
+                            </tr>
+                        </ table>
+                        <hr />
+                        <label for='wordcount' style={{marginRight: '1em'}}>Number of words per session:</label>
+                        <input type='number' id='wordcount' min='1' max='50' />
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            Which cases to practice?
+                        </legend>
+                        <input 
+                            type='checkbox' 
+                            id='allCases' 
+                            checked={switchState.allCases}
+                            onChange={handleSwitchChange}
+                        />
+                        <label for='allCases'>
+                            All Cases
+                        </label>
+                        <hr />
+                        <table width='100%'>
+                            <tr width='100%'>
+                                <td width='50%' textAlign='left'>
+                                    <input 
+                                        type='checkbox' 
+                                        id='nominative' 
+                                        checked={switchState.nominative}
+                                        onChange={handleSwitchChange}
+                                    />
+                                    <label for='nominative'>
+                                        Nominative
+                                    </label>
+                                </td>
+                                <td>
+                                    <input 
+                                        type='checkbox' 
+                                        id='accusative' 
+                                        checked={switchState.accusative}
+                                        onChange={handleSwitchChange}
+                                    />
+                                    <label for='accusative'>
+                                        Accusative
+                                    </label>
+                                </td>
+
+                            </tr>
+                            <tr>
+                            <td width='50%' textAlign='left'>
+                                    <input 
+                                        type='checkbox' 
+                                        id='genitive' 
+                                        checked={switchState.genitive}
+                                        onChange={handleSwitchChange}
+                                    />
+                                    <label for='genitive'>
+                                        Genitive
+                                    </label>
+                                </td>
+                                <td>
+                                    <input 
+                                        type='checkbox' 
+                                        id='ablative' 
+                                        checked={switchState.ablative}
+                                        onChange={handleSwitchChange}
+                                    />
+                                    <label for='ablative'>
+                                        Ablative
+                                    </label>
+                                </td>
+
+                            </tr>
+                            <tr>
+                            <td>
+                                <input 
+                                        type='checkbox' 
+                                        id='dative' 
+                                        checked={switchState.dative}
+                                        onChange={handleSwitchChange}
+                                    />
+                                    <label for='dative'>
+                                        Dative
+                                    </label>
+                                </td>
+
+                                <td>
+                                    <input 
+                                        type='checkbox' 
+                                        id='vocative' 
+                                        checked={switchState.vocative}
+                                        onChange={handleSwitchChange}
+                                    />
+                                    <label for='vocative'>
+                                        Vocative
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </fieldset>
+
+                <Divider />
+                <Accordian>
+                    <AccordionSummary
+                        id='wordList'
+                        aria-controls='wordListContent'
+                        expandIcon={<ExpandMoreIcon />}
+                    >
+                        <Typography>Word List</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography>Add some stuff to accordion</Typography>
+                    </AccordionDetails>
+                </Accordian>
+
+            </Box>
+        </div >
+    )
+}

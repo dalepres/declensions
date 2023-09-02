@@ -1,12 +1,26 @@
 .App {
-  padding: 2px;
+  padding: 1px;
+  margin: none ;
+  font-size:1.6em;
 }
 
 .App-link {
-  color: #61dafb;
+  color: rgb(242, 244, 245);
 }
 
 .App-start {
    text-align: center;
+}
+
+.Config-Screen {
+  font-size: 1.6em;
+}
+
+fieldSet {
+  border-radius: 8px;
+}
+
+input {
+  accent-color: rgb(128, 128, 255);
 }
 

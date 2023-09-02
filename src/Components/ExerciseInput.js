@@ -1,6 +1,7 @@
-import TextField from '@mui/material/TextField';
+import React from 'react';
+import Popper from '@mui/material/Popper';
+import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
 
 
 export const ExerciseInput = (props) => {
@@ -10,33 +11,39 @@ export const ExerciseInput = (props) => {
     const useCase = props.useCase;
     const showAnswers = props.showAnswers;
 
-    anchorEl = showAnswers ? null : popRef.current; //event.target); //popRef);
+    // setAnchorEl(showAnswers ? popRef.current : null); //event.target); //popRef);
 
-    const open = Boolean(anchorEl);
+    const open = showAnswers;
     const id = open ? "pop-" + useCase : undefined;
 
     return (
         <div>
             <Stack>
-                <button style={{ borderRadius: '7px' }} type="button" onClick={handleClick}>
-                    Toggle Popper
-                </button>
                 <div>
-                    <fieldset style={{ marginTop: "0.5em", borderRadius: '10px' }}>
-                        <legend style={{ fontSize: "0.7em", marginBottom: "0" }}>
-                            {useCase}
+                    <fieldset 
+                        style={{ 
+                            marginTop: "0.2em", 
+                            borderRadius: '6px',
+                            textAlign: 'center',
+                            padding: '0'
+                    }}
+                    >
+                        <legend style={{ 
+                            fontSize: "11pt",
+                            fontWeight: 'bold',
+                            textAlign: 'left' }}>
+                            {useCase}:
                         </legend>
                         <input
                             type="text"
-                            className="exInput"
                             style={{
-                                marginBottom: "0.7em",
-                                marginTop: "0",
+                                marginBottom: "1.5em",
                                 border: "none",
                                 outlineColor: "lightgray",
-                                height: "1.5em",
-                                width: "100%",
-                                borderRadius: '5px'
+                                height: "1.25em",
+                                width: "95%",
+                                borderRadius: '5px',
+                                fontSize: '12pt'
                             }}
                             aria-describedby={id}
                             ref={popRef}
@@ -47,7 +54,7 @@ export const ExerciseInput = (props) => {
                     placement="bottom-start"
                     id={id}
                     open={open}
-                    anchorEl={anchorEl}
+                    anchorEl={popRef.current}
                     position="Bottom"
                 >
                     <Box sx={{ bgcolor: "background.paper", color: popColor }}>
@@ -57,32 +64,4 @@ export const ExerciseInput = (props) => {
             </Stack>
         </div>
     );
-}
-
-
-
-
-export const ExercisesInput = (props) => {
-    const useCase = props.useCase;
-    const showAnswers = props.showAnswers;
-    //alert(showAnswers);
-
-
-    return (
-
-        <Stack direction='column' padding="3px">
-            <Tooltip
-                id={useCase}
-                title={useCase}
-                open={showAnswers}
-                placement="left"
-            >
-                <TextField sx={{ width: "200px;" }}
-                    label={useCase + ":"}
-                    size="small"
-                />
-            </Tooltip>
-
-        </Stack>
-    )
 }

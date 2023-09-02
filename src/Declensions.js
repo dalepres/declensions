@@ -9,13 +9,12 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import { MobileNav } from './Components/MobileNav';
+import {useState} from 'react';
 
 export default function Declensions() {
 
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
-
-
-  
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
+   
   return (
     <div className="App">
       {/*<Exercise />*/}
@@ -44,35 +43,54 @@ const StartScreen = () => {
 
 
 const MobileApp = () => {
+  const [activeScreen, setActiveScreen] = useState('home');
+  
+  const getNavSelection = (navSelection) => {
+    setActiveScreen(navSelection);
+    return (navSelection);
+  }
+
   return (
     <>
-      <MobileNav />
+      <MobileNav getNavSelection={getNavSelection} />
       <Divider />
-      <MobileScreen />
+      <MobileScreen navSelection={activeScreen} />
     </>
   );
 }
 
 
-const MobileScreen = () => {
-  return(
+const MobileScreen = (props) => {
+  const navSelection = props.navSelection;
+  const displayConfig = 
+    navSelection === 'config'
+      ? 'block' : 'none';
+  const displayExercise =
+    navSelection === 'exercise'
+      ? 'block' : 'none';
+      var displayStart = 
+      navSelection === 'home' || 
+        (!displayConfig && !displayExercise)
+          ? 'block' : 'none';
+
+  return (
     <div >
       <Box>
-        <Paper variant='outlined' sx={{ display: 'none' }}>
+        <Paper elevation='0'
+          sx={{display: displayConfig}}
+        >
           <Configurator />
         </Paper>
-        <Paper sx={{ display: 'none' }}>
+        <Paper elevation='0'
+          sx={{ display: displayStart }}
+        >
           <StartScreen />
         </Paper>
-        <Paper sx={{ display: 'block' }}>
+        <Paper elevation='0'
+          sx={{ display: displayExercise }}
+        >
           <Exercise />
         </Paper>
-        <Paper sx={{ display: 'none' }} variant="outlined" backgroundColor="blue">
-          <Box name='testName' sx={{ backgroundColor: 'blue' }}>
-            <Typography>Testing some wider text. and then even wider, hopefully wider than the mobile screen.</Typography>
-          </Box>
-        </Paper>
-        <Paper sx={{ display: 'none' }}><Typography>Testing23`</Typography></Paper>
       </Box>
     </div>
   );
