@@ -24,8 +24,6 @@ export const Configurator = () => {
             ...switchState,
             [event.target.id]: event.target.checked
         });
-        alert(event.target.id + event.target.checked);
-        //: event.target.checked});
     }
 
     const [switchState, setSwitchState] = React.useState({
@@ -115,54 +113,6 @@ export const Configurator = () => {
                                 </ td>
                             </ tr>
                         </ table>
-                    </fieldset>
-                    <fieldset>
-                        <legend>New Word:</legend>
-                        <table style={{ width: "100%" }}>
-                            <tr style={{ width: "100%" }}>
-
-                                <td style={{ textAlign: 'center', width: '34%' }} >
-                                    <input
-                                        type="radio"
-                                        checked
-                                        id="newEachDeclensionSet"
-                                        name="newWord"
-                                        value="newEachDeclensionSet"
-                                    />
-                                    <label for="newEachDeclensionSet">
-                                        After Case Set
-                                    </label>
-                                </ td>
-
-                                <td style={{ textAlign: 'center', width: '33%' }} >
-                                    <input
-                                        type="radio"
-                                        id="newWordEachScreen"
-                                        name="newWord"
-                                        value="newWOrdEachScreen"
-                                    />
-                                    <label for="newWordEachScreen">
-                                        Each Screen
-                                    </label>
-                                </ td>
-
-                                <td style={{ textAlign: 'center', width: '33%' }} >
-                                    <input
-                                        type="radio"
-                                        id="onRequestOnly"
-                                        name="newWord"
-                                        value="onRequestOnly"
-                                    />
-                                    <label for="onRequestOnly">
-                                        On Request Only
-                                    </label>
-                                </ td>
-
-                            </tr>
-                        </ table>
-                        <hr />
-                        <label for='wordcount' style={{marginRight: '1em'}}>Number of words per session:</label>
-                        <input type='number' id='wordcount' min='1' max='50' />
                     </fieldset>
                     <fieldset>
                         <legend>
@@ -256,7 +206,103 @@ export const Configurator = () => {
                             </tr>
                         </table>
                     </fieldset>
+                    <fieldset>
+                        <legend>Plurality:</legend>
+                        <table style={{ width: "100%" }}>
+                            <tr style={{ width: "100%" }}>
+
+                                <td style={{ textAlign: 'center', width: '34%' }} >
+                                    <input
+                                        type="radio"
+                                        checked
+                                        id="single"
+                                        name="plurality"
+                                        value="single"
+                                    />
+                                    <label for="single">
+                                        Single
+                                    </label>
+                                </ td>
+
+                                <td style={{ textAlign: 'center', width: '33%' }} >
+                                    <input
+                                        type="radio"
+                                        id="plural"
+                                        name="plurality"
+                                        value="plural"
+                                    />
+                                    <label for="plural">
+                                        Plural
+                                    </label>
+                                </ td>
+
+                                <td style={{ textAlign: 'center', width: '33%' }} >
+                                    <input
+                                        type="radio"
+                                        id="both"
+                                        name="plurality"
+                                        value="both"
+                                    />
+                                    <label for="both">
+                                        Both
+                                    </label>
+                                </ td>
+
+                            </tr>
+                        </ table>
+
+                    </fieldset>
+                    <fieldset>
+                        <legend>New Word:</legend>
+                        <table style={{ width: "100%" }}>
+                            <tr style={{ width: "100%" }}>
+
+                                <td style={{ textAlign: 'center', width: '34%' }} >
+                                    <input
+                                        type="radio"
+                                        checked
+                                        id="newEachDeclensionSet"
+                                        name="newWord"
+                                        value="newEachDeclensionSet"
+                                    />
+                                    <label for="newEachDeclensionSet">
+                                        After Case Set
+                                    </label>
+                                </ td>
+
+                                <td style={{ textAlign: 'center', width: '33%' }} >
+                                    <input
+                                        type="radio"
+                                        id="newWordEachScreen"
+                                        name="newWord"
+                                        value="newWOrdEachScreen"
+                                    />
+                                    <label for="newWordEachScreen">
+                                        Each Screen
+                                    </label>
+                                </ td>
+
+                                <td style={{ textAlign: 'center', width: '33%' }} >
+                                    <input
+                                        type="radio"
+                                        id="onRequestOnly"
+                                        name="newWord"
+                                        value="onRequestOnly"
+                                    />
+                                    <label for="onRequestOnly">
+                                        On Request Only
+                                    </label>
+                                </ td>
+
+                            </tr>
+                        </ table>
+                        <hr />
+                        <label for='wordcount' style={{marginRight: '1em'}}>Number of words per session:</label>
+                        <input type='number' id='wordcount' min='1' max='50' />
+                    </fieldset>
+
                 </fieldset>
+{/*
 
                 <Divider />
                 <Accordian>
@@ -271,6 +317,7 @@ export const Configurator = () => {
                         <Typography>Add some stuff to accordion</Typography>
                     </AccordionDetails>
                 </Accordian>
+                */}
 
             </Box>
         </div >
